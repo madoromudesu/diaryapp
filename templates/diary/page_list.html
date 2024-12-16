@@ -1,0 +1,15 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+<!--page_list:データベースから取得したすべての日記のページデータ
+    page:page_listのデータを割り当てられる変数-->
+<ul>
+    {% for page in page_list %}
+    <li>{{ page.page_date}}: <!--uuidが割り振られる-->
+        <a href="{% url 'diary:page_detail' page.id %}">{{ page.title}}</a>
+    </li>
+    {% empty %}
+    <div>日記のページが1つもありません。</div>
+    {% endfor %}
+</ul>
+
+{% endblock %}
